@@ -1,0 +1,10 @@
+oracle_cloud:
+  children:
+    ubuntu_os:
+      hosts:
+        instance1:
+          ansible_host: PUBLIC_IP_OF_YOUR_ORACLE_CLOUD_INSTANCE
+          ansible_ssh_private_key_file: LOCATION_OF_YOUR_PRIVATE_SSH_KEY_PROVIDED_BY_ORACLE_CLOUD
+      vars:
+        ansible_user: ubuntu
+
