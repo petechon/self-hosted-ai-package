@@ -1,0 +1,4 @@
+## gitignore personal files
+
+ansible/inventory/inventory.yml
+ansible/roles/docker/files/.env
