@@ -1,0 +1,73 @@
+- name: Prerequisites for Docker repository
+  apt:
+    name: 
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+    state: latest
+    update_cache: yes
+
+- name: Add Docker apt repository key.
+  ansible.builtin.get_url:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    dest: "/etc/apt/keyrings/docker.asc"
+    mode: '0644'
+    force: true
+
+- name: Set the Stable docker repository
+  apt_repository:
+    repo: "deb [signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable"
+    state: present
+    update_cache: yes
+
+- name: Install Docker Package
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+    update_cache: yes
+
+- name: Pull latest changes from official supabase git repo
+  ansible.builtin.git:
+    repo: 'https://github.com/supabase/supabase.git'
+    dest: /opt/supabase
+    version: master
+    update: yes
+
+- name: Copy configuration file to remote host
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /opt/
+    owner: root
+    group: root
+    mode: '0600'
+  with_items:
+    - docker-compose-supabase.yml
+    - docker-compose-n8n.yml
+    - .env
+
+
+- name: Pull latest changes from ai agents masterclass self self-hosted ai starter kit git repo
+  ansible.builtin.git:
+    repo: 'https://github.com/coleam00/ai-agents-masterclass.git'
+    dest: /opt/ai-agents-masterclass
+    version: main
+    update: yes
+
+- name: Deploy Docker Compose services
+  community.docker.docker_compose_v2:
+    project_src: /opt/
+    profiles:
+      - cpu
+    files:
+      - docker-compose-supabase.yml
+      - docker-compose-n8n.yml
+    state: present
+    pull: always
+
