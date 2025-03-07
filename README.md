@@ -61,29 +61,29 @@ Make a copy of `inventory.yml.example` and rename it to `inventory.yml` in the a
 Make a copy of `.env.example` and rename it to `.env` in the ansible/roles/docker/files directory
 1. Set the following required environment variables:
    ```bash
-############
-# Secrets
-# YOU MUST CHANGE THESE BEFORE GOING INTO PRODUCTION
-############
+    ############
+    # Secrets
+    # YOU MUST CHANGE THESE BEFORE GOING INTO PRODUCTION
+    ############
 
-POSTGRES_PASSWORD=your-super-secret-and-long-postgres-password
-JWT_SECRET=your-super-secret-jwt-token-with-at-least-32-characters-long
-ANON_KEY=generate-secret-key-from-self-hosting-guide
-SERVICE_ROLE_KEY=generate-secret-key-from-self-hosting-guideDaYlNEoUrrEn2Ig7tqibS-PHK5vgusbcbo7X36XVt4Q
-DASHBOARD_USERNAME=supabase
-DASHBOARD_PASSWORD=this_password_is_insecure_and_should_be_updated
-SECRET_KEY_BASE=generate-your-secret-key
-VAULT_ENC_KEY=your-encryption-key-32-chars-min
+    POSTGRES_PASSWORD=your-super-secret-and-long-postgres-password
+    JWT_SECRET=your-super-secret-jwt-token-with-at-least-32-characters-long
+    ANON_KEY=generate-secret-key-from-self-hosting-guide
+    SERVICE_ROLE_KEY=generate-secret-key-from-self-hosting-guideDaYlNEoUrrEn2Ig7tqibS-PHK5vgusbcbo7X36XVt4Q
+    DASHBOARD_USERNAME=supabase
+    DASHBOARD_PASSWORD=this_password_is_insecure_and_should_be_updated
+    SECRET_KEY_BASE=generate-your-secret-key
+    VAULT_ENC_KEY=your-encryption-key-32-chars-min
 
 
-###########
-# n8n
-# YOU MUST CHANGE THESE BEFORE GOING INTO PRODUCTION
-###########
+    ###########
+    # n8n
+    # YOU MUST CHANGE THESE BEFORE GOING INTO PRODUCTION
+    ###########
 
-POSTGRES_DB=n8n
-N8N_ENCRYPTION_KEY=your-encryption-key-32-chars-min
-N8N_USER_MANAGEMENT_JWT_SECRET=your-encryption-key-32-chars-min
+    POSTGRES_DB=n8n
+    N8N_ENCRYPTION_KEY=your-encryption-key-32-chars-min
+    N8N_USER_MANAGEMENT_JWT_SECRET=your-encryption-key-32-chars-min
    ```
 
    > [!IMPORTANT]
