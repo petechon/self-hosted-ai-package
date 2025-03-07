@@ -51,12 +51,12 @@ cd self-hosted-supabase-n8n/ansible
 Before running ansible, you need to set up your environment variables for ansible, n8n, and Supabase.
 
 Make a copy of `inventory.yml.example` and rename it to `inventory.yml` in the ansible/inventory directory
-    1. In `inventory.yml`, change `PUBLIC_IP_OF_YOUR_ORACLE_CLOUD_INSTANCE` to the external IP address of your Oracle Cloud instance.
-    2. In `inventory.yml`, change `LOCATION_OF_YOUR_PRIVATE_SSH_KEY_PROVIDED_BY_ORACLE_CLOUD` to the location of the saved private SSH 
-        key provided by Oracle Cloud on your local machine.
-            [Oracle Cloud OS Image Consideration]
-            - If you created your instance with Oracle Linux 8 instead of Canonical Ubuntu, then in `inventory.yaml`,
-                change `ansible_user: ubuntu` to `ansible_user: opc`  
+1. In `inventory.yml`, change `PUBLIC_IP_OF_YOUR_ORACLE_CLOUD_INSTANCE` to the external IP address of your Oracle Cloud instance.
+2. In `inventory.yml`, change `LOCATION_OF_YOUR_PRIVATE_SSH_KEY_PROVIDED_BY_ORACLE_CLOUD` to the location of the saved private SSH 
+    key provided by Oracle Cloud on your local machine.
+        [Oracle Cloud OS Image Consideration]
+        - If you created your instance with Oracle Linux 8 instead of Canonical Ubuntu, then in `inventory.yaml`,
+            change `ansible_user: ubuntu` to `ansible_user: opc`  
 
 Make a copy of `.env.example` and rename it to `.env` in the ansible/roles/docker/files directory
 1. Set the following required environment variables:
@@ -104,8 +104,9 @@ If connectivity and package updates are successful, then run the ansible playboo
  ```
 
 If successful, you'll need to open up ports in Oracle Cloud for access to the UIs.
-In the Oracle Cloud dashboard/Home, select hamburger icon, Networking, Virtual Cloud Networks
-Select the vcn-xxxxxxxx-xxxx
-On the left side, select Security Lists
-Select and modify the `Default Security List for vcn-xxxxxxxx-xxxx` to include the destination port(s) you want to allow
+
+In the Oracle Cloud dashboard/Home, select hamburger icon, Networking, Virtual Cloud Networks.
+1. Select the vcn-xxxxxxxx-xxxx
+2. On the left side, select Security Lists
+3. Select and modify the `Default Security List for vcn-xxxxxxxx-xxxx` to include the destination port(s) you want to allow
 
